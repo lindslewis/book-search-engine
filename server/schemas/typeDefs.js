@@ -38,7 +38,16 @@ const typeDefs = gql`
     }
     
     type Query {
-        
+        me: User
+        # getUsers: [User]
+    }
+    
+    # how do we pass stuff in??
+    type Mutation {
+        login: Auth
+        addUser: Auth
+        saveBook: User
+        removeBook: User
     }`
 
 
