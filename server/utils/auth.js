@@ -18,7 +18,9 @@ module.exports = {
     }
 
     // if no token/doesn't match, return this...
+    // took away res... so should be req??
     if (!token) {
+      // return req
       return res.status(400).json({ message: 'You have no token!' });
     }
 
@@ -32,6 +34,7 @@ module.exports = {
     }
 
     // send to next endpoint
+    // still not understanding what this next bit is doing
     next();
   },
   signToken: function ({ username, email, _id }) {
