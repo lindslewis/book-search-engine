@@ -15,6 +15,10 @@ const gql = require('apollo-server-express');
 
 // auth type takes in token and user (referencing user type)
 const typeDefs = gql`
+    input bookInfo {
+        
+    }
+
     type User {
         _id: ID
         username: String
@@ -44,9 +48,9 @@ const typeDefs = gql`
     
     # how do we pass stuff in??
     type Mutation {
-        login: Auth
-        addUser: Auth
-        saveBook: User
+        login(email: String!, password: String!): Auth
+        addUser(username:String!, email:String!, password:String!): Auth
+        saveBook(): User
         removeBook: User
     }`
 
