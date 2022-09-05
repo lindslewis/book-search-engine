@@ -7,8 +7,9 @@ const expiration = '2h';
 module.exports = {
   // function for our authenticated routes
   authMiddleware: function (req, res, next) {
-    // allows token to be sent via  req.query or headers
-    let token = req.query.token || req.headers.authorization;
+    // allows token to be sent via  req.query or headers, mentions query but I don't see it, so I assume need to add that??
+    // Lindsay you're dumb it's right there... how does it know it has a token, since that's required generallY???
+    let token = req.body.token || req.query.token || req.headers.authorization;
 
     // ["Bearer", "<tokenvalue>"]
     if (req.headers.authorization) {
