@@ -6,7 +6,8 @@ const expiration = '2h';
 
 module.exports = {
   // function for our authenticated routes
-  authMiddleware: function (req, res, next) {
+  // this still doesn't feel right
+  authMiddleware: function ({ req }) {
     // allows token to be sent via  req.query or headers, mentions query but I don't see it, so I assume need to add that??
     // Lindsay you're dumb it's right there... how does it know it has a token, since that's required generallY???
     let token = req.body.token || req.query.token || req.headers.authorization;
@@ -16,6 +17,7 @@ module.exports = {
       token = token.split(' ').pop().trim();
     }
 
+    // if no token/doesn't match, return this...
     if (!token) {
       return res.status(400).json({ message: 'You have no token!' });
     }
